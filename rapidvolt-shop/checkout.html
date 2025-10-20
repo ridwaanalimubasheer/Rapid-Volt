@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RapidVolt — Checkout</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+</head>
+<body>
+<!-- Chatbot Widget -->
+<div id="chatbot">
+  <div id="chat-header">Chat with us <span id="chat-close">&times;</span></div>
+  <div id="chat-body"></div>
+  <form id="chat-form">
+    <input type="text" id="chat-input" placeholder="Type your message..." required />
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<!-- Chatbot Button -->
+<button id="chatbot-toggle">💬</button>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="left">
+        <h1 class="logo">
+          <img src="logo.jfif" alt="Rapid Volt" style="width:70px;height:50px;">
+        </h1>
+      </div>
+      <nav class="main-nav">
+        <button id="menuToggle" class="hamburger"><span></span><span></span><span></span></button>
+        <ul id="menuList" class="menu-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="about.html">Brand Story</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+<li><a href="about.html">about us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Checkout</h2>
+      <p>Enter your details below to complete your order.</p>
+    </section>
+
+    <section class="checkout-section">
+      <form id="checkout-form">
+        <label>Full Name<input id="cust-name" name="customer_name" required /></label>
+        <label>Email<input id="cust-email" name="customer_email" type="email" required /></label>
+        <label>Phone Number<input id="cust-phone" name="customer_phone" type="tel" required /></label>
+        <label>Address<textarea id="cust-address" name="customer_address" required></textarea></label>
+        <div id="order-summary" class="order-summary"></div>
+        <button type="submit" class="btn primary">Complete Purchase</button>
+        <div id="checkoutStatus" class="status"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container">© RapidVolt — All rights reserved.</div></footer>
+
+  <script>
+    emailjs.init('_svtAxKDEi0yLEz6Y');
+
+    // Load cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderSummary = document.getElementById('order-summary');
+    if(cart.length === 0) {
+      orderSummary.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      let html = "<h3>Your Order</h3><ul>";
+      let total = 0;
+      cart.forEach(item => {
+        html += `<li>${item.name} (x${item.quantity}) - AED ${item.price * item.quantity}</li>`;
+        total += item.price * item.quantity;
+      });
+      html += `</ul><p><strong>Total: AED ${total}</strong></p>`;
+      orderSummary.innerHTML = html;
+    }
+
+    // Handle checkout form submission
+    document.getElementById('checkout-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const params = {
+        to_email: 'rapidvoltshop@gmail.com',
+        customer_name: document.getElementById('cust-name').value,
+        customer_email: document.getElementById('cust-email').value,
+        customer_phone: document.getElementById('cust-phone').value,
+        customer_address: document.getElementById('cust-address').value,
+        order_details: cart.map(i => `${i.name} (x${i.quantity}) - AED ${i.price * i.quantity}`).join(', '),
+        order_total: cart.reduce((sum, i) => sum + i.price * i.quantity, 0)
+      };
+
+      const status = document.getElementById('checkoutStatus');
+      status.textContent = "Sending order details...";
+
+      emailjs.send('service_k55dmgp', 'template_ny6vz8a', params)
+        .then(() => {
+          status.textContent = "✅ Order placed successfully! Confirmation email sent.";
+          localStorage.removeItem('cart');
+        })
+        .catch(() => {
+          status.textContent = "❌ Error sending order details. Try again later.";
+        });
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
