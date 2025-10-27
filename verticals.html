@@ -1,74 +1,101 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RapidVolt — Verticals</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>RapidVolt — Verticals</title>
+<link rel="stylesheet" href="styles.css" />
+<script defer src="script.js"></script>
 </head>
-
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="left">
-        <h1 class="logo"><img src="logo.jfif" alt="RapidVolt" style="width:70px;height:50px;"></h1>
-      </div>
-      <nav class="main-nav" aria-label="Main Navigation">
-        <button id="menuToggle" class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-        <ul id="menuList" class="menu-list">
-          <li class="menu-item"><a href="index.html">Home</a></li>
-          <li class="menu-item"><a href="verticals.html">Verticals</a></li>
-          <li class="menu-item"><a href="shop.html">Shop</a></li>
-          <li class="menu-item"><a href="about.html">Brand Story</a></li>
-          <li class="menu-item"><a href="careers.html">Careers</a></li>
-          <li class="menu-item"><a href="contact.html">Contact Us</a></li>
-          <li class="menu-item"><a href="checkout.html">Checkout</a></li>
-        </ul>
-      </nav>
-      <div class="right-actions">
-        <button id="extraShop" class="nav-btn">Shop</button>
-        <button id="cartToggle" class="cart-btn">Cart (<span id="cart-count">0</span>)</button>
-      </div>
+
+<!-- Chatbot Widget -->
+<div id="chatbot">
+  <div id="chat-header">Chat with us <span id="chat-close">&times;</span></div>
+  <div id="chat-body"></div>
+  <form id="chat-form">
+    <input type="text" id="chat-input" placeholder="Type your message..." required />
+    <button type="submit">Send</button>
+  </form>
+</div>
+<button id="chatbot-toggle">💬</button>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo"><img src="logo.jfif" alt="RapidVolt"></div>
+    <nav class="main-nav">
+      <button id="menuToggle" class="hamburger"><span></span><span></span><span></span></button>
+      <ul id="menuList" class="menu-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="verticals.html">Verticals</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">Brand Story</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <button class="cart-btn" onclick="window.location.href='checkout.html'">Cart (<span id="cart-count">0</span>)</button>
+  </div>
+</header>
+
+<main class="container">
+  <h1 style="text-align:center;margin:30px 0;">Our Product Verticals</h1>
+  <div class="products-grid">
+    <div class="product-card" data-id="lighting">
+      <h4>Schneider Lighting Control System</h4>
+      <p class="desc">Advanced lighting automation solutions.</p>
+      <div class="price">AED 1299</div>
     </div>
-  </header>
+    <div class="product-card" data-id="motion">
+      <h4>ESYLUX Motion Sensor</h4>
+      <p class="desc">KNX & standalone motion detection.</p>
+      <div class="price">AED 299</div>
+    </div>
+    <div class="product-card" data-id="accessories">
+      <h4>Schneider Wiring Accessories</h4>
+      <p class="desc">Timeless and traditional design wiring devices.</p>
+      <div class="price">AED 499</div>
+    </div>
+    <div class="product-card" data-id="isolator">
+      <h4>Isoline Enclosed Switch</h4>
+      <p class="desc">Durable enclosed isolators for safety.</p>
+      <div class="price">AED 749</div>
+    </div>
+    <div class="product-card" data-id="bms">
+      <h4>Honeywell Building Management System</h4>
+      <p class="desc">Smart control systems for modern buildings.</p>
+      <div class="price">AED 1899</div>
+    </div>
+    <div class="product-card" data-id="ups">
+      <h4>APC by Schneider — UPS</h4>
+      <p class="desc">Uninterruptible power supplies for all needs.</p>
+      <div class="price">AED 950</div>
+    </div>
+    <div class="product-card" data-id="conduits">
+      <h4>DECODUCT — Conduits & Accessories</h4>
+      <p class="desc">Reliable electrical conduits and fittings.</p>
+      <div class="price">AED 249</div>
+    </div>
+    <div class="product-card" data-id="fan">
+      <h4>KDK Ventilation Fan</h4>
+      <p class="desc">Efficient air circulation and cooling.</p>
+      <div class="price">AED 320</div>
+    </div>
+  </div>
+</main>
 
-  <main class="container">
-    <h1 style="text-align:center;margin-top:30px;">Our Product Verticals</h1>
+<footer class="site-footer">
+  © RapidVolt — All rights reserved.
+</footer>
 
-    <section class="products-grid" id="products-verticals">
-      <!-- Products will be dynamically rendered from script.js -->
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">© RapidVolt — All rights reserved.</div>
-  </footer>
-
-  <script>
-    // Render Verticals and link to Shop page
-    document.addEventListener('DOMContentLoaded', () => {
-      const verticalsEl = document.getElementById('products-verticals');
-      if (!verticalsEl) return;
-
-      PRODUCTS.forEach(p => {
-        const card = document.createElement('article');
-        card.className = 'product-card';
-        card.dataset.id = p.id;
-        card.innerHTML = `
-          <h4>${p.title}</h4>
-          <p class="desc">${p.desc}</p>
-          <div class="price">AED ${p.price.toFixed(2)}</div>
-        `;
-
-        // On click, go to Shop page with product ID
-        card.addEventListener('click', () => {
-          window.location.href = `shop.html?product=${p.id}`;
-        });
-
-        verticalsEl.appendChild(card);
-      });
+<script>
+  // Redirect vertical clicks to shop with product query
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.id;
+      window.location.href = `shop.html?product=${id}`;
     });
-  </script>
+  });
+</script>
 </body>
 </html>
