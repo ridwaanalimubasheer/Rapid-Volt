@@ -117,6 +117,23 @@ if (menuToggle && menuList) {
   });
 }
 
+// At the end of your script.js, after PRODUCTS are rendered
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get('product'); // e.g., "lighting"
+  if(productId){
+    const target = document.querySelector(`.product-card[data-id="${productId}"]`);
+    if(target){
+      // Optional: scroll into view
+      target.scrollIntoView({behavior: 'smooth', block: 'center'});
+      // Optional: highlight it
+      target.style.border = '2px solid #0a6cff';
+      target.style.boxShadow = '0 4px 12px rgba(10,108,255,0.3)';
+    }
+  }
+});
+
+
 // -------------------- Highlight product from URL --------------------
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
