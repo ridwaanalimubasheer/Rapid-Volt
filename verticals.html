@@ -1,93 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RapidVolt — Verticals</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RapidVolt | Electrical Supplier UAE</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #fff; color: #333; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 15px 40px; background: #f5f5f5; position: sticky; top: 0; z-index: 10; }
+    .logo { font-weight: 700; font-size: 1.6em; color: #333; }
+    .uae-flag { width: 22px; height: 14px; margin-left: 6px; border-radius: 2px; border: 1px solid #ccc; background: linear-gradient(to right, #00732f 0 33%, #fff 33% 66%, #ff0000 66% 100%); display: inline-block; vertical-align: middle; }
+    nav ul { display: flex; list-style: none; gap: 20px; }
+    nav a { text-decoration: none; color: #333; font-weight: 600; }
+    #menuToggle { display: none; }
+    .cart-btn { background: #ffcc00; padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 40px; }
+    .product-card { border: 1px solid #ddd; border-radius: 10px; padding: 15px; text-align: center; transition: 0.3s; cursor: pointer; }
+    .product-card:hover { box-shadow: 0 4px 10px rgba(0,0,0,0.1); transform: translateY(-4px); }
+    .price { font-weight: 700; color: #00732f; }
+    .btn { background: #00732f; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600; margin-top: 8px; }
+    .btn:hover { background: #00993c; }
+    .highlight { outline: 3px solid #ffcc00; animation: blink 0.8s infinite alternate; }
+    @keyframes blink { from { outline-color: #ffcc00; } to { outline-color: #fff; } }
+    footer { background: #f5f5f5; padding: 20px; text-align: center; font-size: 0.9em; color: #555; }
+  </style>
 </head>
-
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="left">
-        <h1 class="logo">
-          <img src="logo.jfif" alt="RapidVolt" style="width:70px;height:50px;">
-        </h1>
-      </div>
 
-      <nav class="main-nav" aria-label="Main Navigation">
-        <button id="menuToggle" class="hamburger" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-
-        <ul id="menuList" class="menu-list">
-          <li class="menu-item"><a href="index.html">Home</a></li>
-          <li class="menu-item"><a href="verticals.html">Verticals</a></li>
-          <li class="menu-item"><a href="shop.html">Shop</a></li>
-          <li class="menu-item"><a href="about.html">Brand Story</a></li>
-          <li class="menu-item"><a href="careers.html">Careers</a></li>
-          <li class="menu-item"><a href="contact.html">Contact Us</a></li>
-          <li class="menu-item"><a href="about.html">About Us</a></li>
-          <li class="menu-item"><a href="checkout.html">Checkout</a></li>
-        </ul>
-      </nav>
-
-      <div class="right-actions">
-        <button id="extraShop" class="nav-btn">Shop</button>
-        <button id="cartToggle" class="cart-btn">Cart (<span id="cart-count">0</span>)</button>
-      </div>
-    </div>
+  <header>
+    <div class="logo">RapidVolt <span class="uae-flag"></span></div>
+    <nav>
+      <ul id="menuList">
+        <li><a href="vertails.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="cart-btn" onclick="window.location.href='cart.html'">🛒 Cart (<span id="cart-count">0</span>)</div>
   </header>
 
-  <main class="container">
-    <h1>Our Products</h1>
+  <section class="hero" style="text-align:center; padding:60px 20px; background:#ffcc00; color:#333;">
+    <h1>Welcome to RapidVolt</h1>
+    <p>Your trusted UAE supplier for electrical and power solutions.</p>
+    <a href="shop.html" class="btn" style="background:#333;">Shop Now</a>
+  </section>
 
-    <!-- Container where JS will render cards -->
-    <div id="products" class="product-grid"></div>
-
-    <!-- Editable product list (data attributes are read by JS) -->
-    <div class="product" 
-         data-name="Schneider Lighting Control System"
-         data-desc="Advanced lighting control for smart buildings."
-         data-price="120"
-         data-img="lighting.jpg">
+  <section class="product-grid">
+    <!-- Product 1 -->
+    <div class="product-card"
+      data-product-id="p1"
+      data-title="Schneider Lighting Control System"
+      data-price="1299"
+      data-desc="High-quality lighting automation.">
+      <h4>Schneider Lighting Control System</h4>
+      <p class="desc">High-quality lighting automation.</p>
+      <div class="price">AED 1299</div>
+      <button class="btn add-to-cart" data-id="p1">Add to Cart</button>
     </div>
 
-    <div class="product"
-         data-name="ESYLUX Motion Sensor"
-         data-desc="Reliable KNX and standalone motion sensors."
-         data-price="75"
-         data-img="motion.jpg">
+    <!-- Product 2 -->
+    <div class="product-card"
+      data-product-id="p2"
+      data-title="Standalone Motion Sensor"
+      data-price="299"
+      data-desc="Smart motion detection.">
+      <h4>Standalone Motion Sensor</h4>
+      <p class="desc">Smart motion detection for homes and offices.</p>
+      <div class="price">AED 299</div>
+      <button class="btn add-to-cart" data-id="p2">Add to Cart</button>
     </div>
 
-    <div class="product"
-         data-name="APC by Schneider — UPS"
-         data-desc="Uninterruptible power supplies for data centers and offices."
-         data-price="350"
-         data-img="ups.jpg">
+    <!-- Product 3 -->
+    <div class="product-card"
+      data-product-id="p3"
+      data-title="Schneider Wiring Accessories"
+      data-price="499"
+      data-desc="Reliable and stylish switches.">
+      <h4>Schneider Wiring Accessories</h4>
+      <p class="desc">Reliable and stylish switches & sockets.</p>
+      <div class="price">AED 499</div>
+      <button class="btn add-to-cart" data-id="p3">Add to Cart</button>
     </div>
 
-    <div class="product"
-         data-name="DECODUCT — Conduits & Accessories"
-         data-desc="High-quality electrical conduits and fittings."
-         data-price="45"
-         data-img="conduits.jpg">
+    <!-- Product 4 -->
+    <div class="product-card"
+      data-product-id="p4"
+      data-title="Isoline Enclosed Switch"
+      data-price="749"
+      data-desc="Durable enclosed isolator switch.">
+      <h4>Isoline Enclosed Switch</h4>
+      <p class="desc">Durable enclosed isolator switch.</p>
+      <div class="price">AED 749</div>
+      <button class="btn add-to-cart" data-id="p4">Add to Cart</button>
     </div>
+  </section>
 
-    <div class="product"
-         data-name="Honeywell BMS"
-         data-desc="Building Management Systems for smart facilities."
-         data-price="800"
-         data-img="bms.jpg">
-    </div>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">© RapidVolt — All rights reserved.</div>
+  <footer>
+    <p>© 2025 RapidVolt Electrical Supplies UAE — All Rights Reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
