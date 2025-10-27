@@ -13,6 +13,26 @@ function loadProductsFromHTML() {
   }));
 }
 
+// -------------------- Highlight Product from URL --------------------
+function highlightProductFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const productId = params.get('product'); // e.g., "lighting", "motion"
+  if (!productId) return;
+
+  const productsEl = document.getElementById('products');
+  if (!productsEl) return;
+
+  const productCard = Array.from(productsEl.children).find(c => c.dataset.id === productId);
+  if (productCard) {
+    productCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    productCard.classList.add('highlight');
+    setTimeout(() => productCard.classList.remove('highlight'), 4000); // highlight for 4s
+  }
+}
+
+document.addEventListener('DOMContentLoaded', highlightProductFromURL);
+
+
 document.addEventListener('DOMContentLoaded', loadProductsFromHTML);
 
 // -------------------- Cart --------------------
