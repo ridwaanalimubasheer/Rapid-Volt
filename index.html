@@ -9,24 +9,29 @@
   <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
 </head>
 <body>
-<!-- Chatbot Widget -->
-<div id="chatbot">
-  <div id="chat-header">Chat with us <span id="chat-close">&times;</span></div>
-  <div id="chat-body"></div>
-  <form id="chat-form">
-    <input type="text" id="chat-input" placeholder="Type your message..." required />
-    <button type="submit">Send</button>
-  </form>
-</div>
+  <!-- Chatbot Widget -->
+  <div id="chatbot">
+    <div id="chat-header">Chat with us <span id="chat-close">&times;</span></div>
+    <div id="chat-body"></div>
+    <form id="chat-form">
+      <input type="text" id="chat-input" placeholder="Type your message..." required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
 
-<!-- Chatbot Button -->
-<button id="chatbot-toggle">💬</button>
+  <!-- Chatbot Button -->
+  <button id="chatbot-toggle" type="button">💬</button>
 
   <header class="site-header">
     <div class="container header-inner">
-      <div class="left"><h1 class="logo"><img src="logo.jfif" alt="rapid volt" style="width:70px;height:50px;"></h1></div>
-      <nav class="-nav" aria-label=" Navigation">
-        <button id="menuToggle" class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <div class="left">
+        <h1 class="logo"><img src="logo.jfif" alt="rapid volt" style="width:70px;height:50px;"></h1>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <button id="menuToggle" class="hamburger" type="button" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
         <ul id="menuList" class="menu-list">
           <li class="menu-item"><a href="index.html">Home</a></li>
           <li class="menu-item"><a href="verticals.html">Verticals</a></li>
@@ -34,58 +39,76 @@
           <li class="menu-item"><a href="about.html">Brand Story</a></li>
           <li class="menu-item"><a href="careers.html">Careers</a></li>
           <li class="menu-item"><a href="contact.html">Contact Us</a></li>
-          <li><a href="about.html">about us</a></li>
-          <li><a href="checkout.html">checkout</a></li>
         </ul>
       </nav>
+
       <div class="right-actions">
-        <button id="extraShop" class="nav-btn">Shop</button>
-        <button id="cartToggle" class="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+        <button id="extraShop" class="nav-btn" type="button">Shop</button>
+        <button id="cartToggle" class="cart-btn" type="button">Cart (<span id="cart-count">0</span>)</button>
       </div>
     </div>
   </header>
-  < class="container">
+
+  <main class="container">
     <section id="hero" class="hero">
       <h2>Lighting & Wiring Solutions — RapidVolt</h2>
       <p>Professional-grade products. Clear pricing. Fast checkout.</p>
       <a class="cta" id="shopNow" href="shop.html">Shop Now</a>
     </section>
+
     <section id="info" class="info-section">
       <h3>What we do</h3>
-      <p>RapidVolt supplies high-quality wiring devices, lighting controls, motion sensors and accessories to professionals and homeowners. Browse the shop for products and use the cart to checkout — orders are emailed to rapidvoltshop@gmail.com.</p>
+      <p>RapidVolt supplies high-quality wiring devices, lighting controls, motion sensors and accessories to professionals and homeowners. Browse the shop for products and use the cart to checkout quickly.</p>
     </section>
-      <section id="info" class="info-section">
-    ...existing content...
-  </section>
 
-  <!-- ad slot -->
-  <div style="width:300px;max-width:100%;min-height:250px;margin:16px auto;">
-    <script>
-    (function(zffk){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.currentScript || d.scripts[d.scripts.length - 1];
-    s.settings = zffk || {};
-    s.src = "\/\/massivesalad.com\/b-XJVQs.dkGXlK0VYZWHcC\/_eLm\/9ou\/ZWU\/l\/kePFTAcS2TMuzuIswEMhT\/cftDNezUYdzlMdjbAfyDMJQM";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-    })({})
-    </script>
-  </div>
-</main>
+    <section class="info-section">
+      <h3>Why choose us</h3>
+      <p>Reliable supply, practical product selection, and a smooth purchasing experience for residential, commercial, and project-based needs.</p>
+    </section>
+
+    <!-- ad slot -->
+    <div style="width:300px;max-width:100%;min-height:250px;margin:16px auto;">
+      <script>
+        (function(zffk){
+          var d = document,
+              s = d.createElement('script'),
+              l = d.currentScript || d.scripts[d.scripts.length - 1];
+          s.settings = zffk || {};
+          s.src = "\/\/massivesalad.com\/b-XJVQs.dkGXlK0VYZWHcC\/_eLm\/9ou\/ZWU\/l\/kePFTAcS2TMuzuIswEMhT\/cftDNezUYdzlMdjbAfyDMJQM";
+          s.async = true;
+          s.referrerPolicy = 'no-referrer-when-downgrade';
+          l.parentNode.insertBefore(s, l);
+        })({})
+      </script>
+    </div>
   </main>
+
   <aside id="cartDrawer" class="cart-drawer hidden">
     <h3>Your Cart</h3>
     <div id="cartItems"></div>
     <div class="cart-summary">
       <div>Total: <strong id="cartTotal">AED 0.00</strong></div>
       <a id="toCartPage" class="btn primary" href="cart.html">View Cart</a>
-      <button id="closeCart" class="btn">Close</button>
+      <button id="closeCart" class="btn" type="button">Close</button>
     </div>
   </aside>
+
   <footer class="site-footer"><div class="container">© RapidVolt — All rights reserved.</div></footer>
   <script src="script.js"></script>
-  <script type="text/javascript"> adroll_adv_id = "RTISZ2CFYVALRJOC2GA677"; adroll_pix_id = "YBXE42N3MNCCVAVQDUG5YB"; adroll_version = "2.0";  (function(w, d, e, o, a) { w.__adroll_loaded = true; w.adroll = w.adroll || []; w.adroll.f = [ 'setProperties', 'identify', 'track', 'identify_email', 'get_cookie' ]; var roundtripUrl = "https://s.adroll.com/j/" + adroll_adv_id + "/roundtrip.js"; for (a = 0; a < w.adroll.f.length; a++) { w.adroll[w.adroll.f[a]] = w.adroll[w.adroll.f[a]] || (function(n) { return function() { w.adroll.push([ n, arguments ]) } })(w.adroll.f[a]) }  e = d.createElement('script'); o = d.getElementsByTagName('script')[0]; e.async = 1; e.src = roundtripUrl; o.parentNode.insertBefore(e, o); })(window, document); adroll.track("pageView"); </script> 
+  <script type="text/javascript">
+    adroll_adv_id = "RTISZ2CFYVALRJOC2GA677";
+    adroll_pix_id = "YBXE42N3MNCCVAVQDUG5YB";
+    adroll_version = "2.0";
+    (function(w, d, e, o, a) {
+      w.__adroll_loaded = true;
+      w.adroll = w.adroll || {};
+      w.adroll.f = [function(){ }];
+      a = d.createElement('script');
+      o = d.getElementsByTagName('script')[0];
+      a.async = 1;
+      a.src = e;
+      o.parentNode.insertBefore(a, o);
+    })(window, document, 'https://s.adroll.com/j/roundtrip.js');
+  </script>
 </body>
 </html>
